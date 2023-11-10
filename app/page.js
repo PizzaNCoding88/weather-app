@@ -4,12 +4,14 @@ import { useState } from "react";
 
 export default function Home() {
   const [data, setData] = useState("");
+  const [input, setInput] = useState();
+
   const fetchD = async () => {
-    const a = await fetch("https://geocode.maps.co/search?q=Rome");
+    const a = await fetch(`https://geocode.maps.co/search?q=${input}`);
     if (a.ok === true) {
       const temp = await a.json();
-      const lat = temp[0].lat;
-      const lon = temp[0].lon;
+      const lat = temp[1].lat;
+      const lon = temp[1].lon;
       return [lat, lon];
     } else {
       return a.status;
@@ -20,12 +22,13 @@ export default function Home() {
     let a = await fetchD();
     let [la, lo] = [...a];
     const w = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${la}&lon=${lo}&appid=cc8ca712bf2eefce816c3ed3d000e9a8`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${la}&lon=${lo}&appid=cc8ca712bf2eefce816c3ed3d000e9a8&units=metric`
     );
+
     if (w.ok == true) {
       const res = await w.json();
+
       setData(res);
-      // console.log(data);
       return;
     } else {
       console.log(w.status, w);
@@ -33,8 +36,19 @@ export default function Home() {
     }
   };
 
+  const handleChange = (e) => {
+    e.preventDefault();
+    setInput(e.target.value);
+  };
+
   return (
     <>
+      <input
+        placeholder="Enter you location"
+        type="text"
+        onChange={handleChange}
+        className="bg-gray-800 text-white"
+      ></input>
       <button
         className="border-2 border-red-500 rounded-xl py-1 px-4 m-4"
         onClick={fetchWeather}
@@ -42,15 +56,13 @@ export default function Home() {
         Test
       </button>
 
-      {data ? <p>Temp in Rome today is: {data.main.temp}</p> : ""}
+      {data ? (
+        <p>
+          Temp in {input} today is: {Math.trunc(data.main.temp)}&deg;C
+        </p>
+      ) : (
+        ""
+      )}
     </>
   );
 }
-
-//retrieve lat and lon
-//pass lat and lon in the api call for the weather
-
-//to retrieve weather based on named position
-//call the weather async function
-//retrieve in it lat and lon
-//pass lat and lon as arguments of the fetch function for the weather
