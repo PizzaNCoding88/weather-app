@@ -1,5 +1,5 @@
 .main {
-  @apply h-1/2 bg-cover bg-right rounded-b-lg flex flex-col justify-between py-10 text-white;
+  @apply h-1/2 bg-cover bg-right rounded-b-lg flex flex-col justify-between py-14 text-white;
 }
 
 .main {
@@ -15,11 +15,11 @@
 }
 
 .position {
-  @apply text-center uppercase text-2xl;
+  @apply text-center uppercase text-2xl font-bold;
 }
 
 .position span {
-  @apply text-base;
+  @apply text-base font-normal;
 }
 
 .bottom {
@@ -31,5 +31,9 @@
 }
 
 .temp {
-  @apply text-3xl;
+  @apply text-3xl font-bold;
+}
+
+.bottom img {
+  @apply h-20 w-20;
 }
