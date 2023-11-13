@@ -10,6 +10,10 @@
   @apply absolute top-0 left-0 w-full h-full bg-opacity-40 bg-gray-900 z-10;
 } */
 
+.top {
+  @apply flex flex-col gap-2;
+}
+
 .date {
   @apply text-center text-2xl;
 }
