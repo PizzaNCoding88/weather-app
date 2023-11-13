@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import "./page.css";
-import TopSection from "./components/TopSection.jsx/TopSection";
+import TopSection from "./components/TopSection/TopSection";
+import BottomSection from "./components/BottomSection/BottomSection";
 export default function Home() {
   const [data, setData] = useState("");
   const [input, setInput] = useState();
@@ -46,7 +47,7 @@ export default function Home() {
     <>
       <main className="main">
         <TopSection />
-        <div className="bottom-section"></div>
+        <BottomSection />
       </main>
       {/*     
       <input
