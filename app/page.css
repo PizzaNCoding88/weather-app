@@ -1,0 +1,7 @@
+.main {
+  @apply flex flex-col h-screen;
+}
+
+.bottom-section {
+  @apply h-1/2;
+}

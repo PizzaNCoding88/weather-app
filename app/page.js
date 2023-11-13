@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
+import "./page.css";
+import TopSection from "./components/TopSection.jsx/TopSection";
 export default function Home() {
   const [data, setData] = useState("");
   const [input, setInput] = useState();
@@ -10,8 +11,8 @@ export default function Home() {
     const a = await fetch(`https://geocode.maps.co/search?q=${input}`);
     if (a.ok === true) {
       const temp = await a.json();
-      const lat = temp[1].lat;
-      const lon = temp[1].lon;
+      const lat = temp[0].lat;
+      const lon = temp[0].lon;
       return [lat, lon];
     } else {
       return a.status;
@@ -43,6 +44,11 @@ export default function Home() {
 
   return (
     <>
+      <main className="main">
+        <TopSection />
+        <div className="bottom-section"></div>
+      </main>
+      {/*     
       <input
         placeholder="Enter you location"
         type="text"
@@ -57,12 +63,12 @@ export default function Home() {
       </button>
 
       {data ? (
-        <p>
+        <p className="text-white">
           Temp in {input} today is: {Math.trunc(data.main.temp)}&deg;C
         </p>
       ) : (
         ""
-      )}
+      )} */}
     </>
   );
 }
