@@ -1,0 +1,7 @@
+.container {
+  @apply flex items-center justify-between px-8 py-2 bg-gradient-to-b from-[#6EAAE0] to-[#707071] rounded-lg text-white text-lg font-light;
+}
+
+.container img {
+  @apply w-12 h-12;
+}

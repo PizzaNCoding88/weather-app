@@ -1,6 +1,8 @@
 import React from "react";
 import Bottom from "./BottomSection.module.css";
 import Card from "../Card/Card";
+import LongCardTop from "../LongCardTop/LongCardTop";
+import LongCardBottom from "../LongCardBottom/LongCardBottom";
 
 const BottomSection = () => {
   return (
@@ -11,8 +13,12 @@ const BottomSection = () => {
           <Card />
           <Card />
         </div>
-        <div className={Bottom.middle}></div>
-        <div className={Bottom.bottom}></div>
+        <div className={Bottom.middle}>
+          <LongCardTop />
+        </div>
+        <div className={Bottom.bottom}>
+          <LongCardBottom />
+        </div>
       </div>
     </>
   );
