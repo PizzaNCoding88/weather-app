@@ -3,12 +3,46 @@ import Top from "./TopSection.module.css";
 import Image from "next/image";
 import sunIcon from "../../../public/assets/sun-icon.png";
 
+const date = new Date();
+const today = date.getDate();
+
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+const month = months[date.getMonth()];
+
+const weekDay = days[date.getDay()];
+
 const TopSection = () => {
   return (
     <div className={Top.main}>
       {/* <div className={Top.overlay}></div> */}
       <div className={Top.top}>
-        <div className={Top.date}> 13th November, Monday</div>
+        <div className={Top.date}>
+          {today} {""}
+          {month}, {weekDay}
+        </div>
         <div className={Top.position}>
           {" "}
           London, <span>GB</span>
