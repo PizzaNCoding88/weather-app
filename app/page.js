@@ -10,11 +10,10 @@ export default function Home() {
   const [input, setInput] = useState();
   const [location, setLocation] = useState();
 
-  function GetGeoLocationOnLoad() {
-    useEffect(() => {
-      getLocation();
-    }, []);
-  }
+  useEffect(() => {
+    getLocation();
+  });
+
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(getPosition, error);
