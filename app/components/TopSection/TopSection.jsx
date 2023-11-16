@@ -34,31 +34,44 @@ const month = months[date.getMonth()];
 
 const weekDay = days[date.getDay()];
 
-const TopSection = () => {
+const TopSection = (props) => {
+  const { data } = props;
   return (
-    <div className={Top.main}>
-      {/* <div className={Top.overlay}></div> */}
-      <div className={Top.top}>
-        <div className={Top.date}>
-          {today} {""}
-          {month}, {weekDay}
+    <>
+      {data ? (
+        <div className={Top.main}>
+          <div className={Top.top}>
+            <div className={Top.date}>
+              {today} {""}
+              {month}, {weekDay}
+            </div>
+            <div className={Top.position}>
+              {data.name},<span>{data.sys.country}</span>
+            </div>
+          </div>
+          <div className={Top.bottom}>
+            <div>
+              <Image alt="weather icon" src={sunIcon}></Image>
+            </div>
+            <div className={Top.bottomright}>
+              <div className={Top.temp}>{Math.trunc(data.main.temp)}&deg;C</div>
+              <div>{data.weather[0].description}</div>
+              <div>Real Feel: 7C</div>
+            </div>
+          </div>
         </div>
-        <div className={Top.position}>
-          {" "}
-          London, <span>GB</span>
-        </div>
-      </div>
-      <div className={Top.bottom}>
-        <div>
-          <Image alt="weather icon" src={sunIcon}></Image>
-        </div>
-        <div className={Top.bottomright}>
-          <div className={Top.temp}>8&deg;C</div>
-          <div>Sunny</div>
-          <div>Real Feel: 7C</div>
-        </div>
-      </div>
-    </div>
+      ) : (
+        <>
+          <p className="text-white text-center text-3xl mt-4">
+            Fetching data...
+          </p>
+
+          <div className="text-center my-4">
+            <div className={Top.ldsring}></div>
+          </div>
+        </>
+      )}
+    </>
   );
 };
 

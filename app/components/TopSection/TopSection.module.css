@@ -41,3 +41,28 @@
 .bottom img {
   @apply h-20 w-20;
 }
+
+.ldsring {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+.ldsring:after {
+  content: " ";
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
