@@ -99,7 +99,7 @@ export default function Home() {
       {inter ? (
         <main className="main">
           <TopSection data={data} />
-          <BottomSection />
+          <BottomSection data={data} />
         </main>
       ) : (
         <input></input>

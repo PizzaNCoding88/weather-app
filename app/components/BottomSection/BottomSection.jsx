@@ -4,20 +4,22 @@ import Card from "../Card/Card";
 import LongCardTop from "../LongCardTop/LongCardTop";
 import LongCardBottom from "../LongCardBottom/LongCardBottom";
 
-const BottomSection = () => {
+const BottomSection = (props) => {
+  const { data } = props;
   return (
     <>
+      {console.log(data)};
       <div className={Bottom.container}>
         <div className={Bottom.top}>
-          <Card />
-          <Card />
-          <Card />
+          <Card data={data} />
+          <Card data={data} />
+          <Card data={data} />
         </div>
         <div className={Bottom.middle}>
-          <LongCardTop />
+          <LongCardTop data={data} />
         </div>
         <div className={Bottom.bottom}>
-          <LongCardBottom />
+          <LongCardBottom data={data} />
         </div>
       </div>
     </>

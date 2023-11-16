@@ -56,7 +56,7 @@ const TopSection = (props) => {
             <div className={Top.bottomright}>
               <div className={Top.temp}>{Math.trunc(data.main.temp)}&deg;C</div>
               <div>{data.weather[0].description}</div>
-              <div>Real Feel: 7C</div>
+              <div>Real Feel: {Math.trunc(data.main.feels_like)}</div>
             </div>
           </div>
         </div>

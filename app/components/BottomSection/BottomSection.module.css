@@ -1,5 +1,5 @@
 .container {
-  @apply h-1/2 py-10 px-12 flex flex-col justify-between;
+  @apply h-1/2 py-10 px-8 flex flex-col justify-between;
 }
 
 .top {
