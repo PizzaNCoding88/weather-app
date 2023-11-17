@@ -5,7 +5,7 @@ const Card = (props) => {
   const { data } = props;
   return (
     <>
-      {console.log(data)}
+      {/* {console.log(data)} */}
       <div className={Cardstyle.container}>
         <div className={Cardstyle.top}>
           High Temp: {Math.trunc(data.main.temp_max)}

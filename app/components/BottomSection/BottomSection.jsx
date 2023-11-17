@@ -8,7 +8,7 @@ const BottomSection = (props) => {
   const { data } = props;
   return (
     <>
-      {console.log(data)};
+      {/* {console.log(data)}; */}
       <div className={Bottom.container}>
         <div className={Bottom.top}>
           <Card data={data} />

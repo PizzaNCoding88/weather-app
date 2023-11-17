@@ -25,6 +25,7 @@ export default function Home() {
   }
 
   function position(position) {
+    // console.log(position);
     setNoGeoLocation(false);
     // console.log(position.coords.latitude, position.coords.longitude);
     const latitude = position.coords.latitude;
@@ -32,8 +33,9 @@ export default function Home() {
     fetchWeather(latitude, longitude);
   }
 
-  function error() {
+  function error(error) {
     setNoGeoLocation(true);
+    console.log(error, error.code);
     // handleChange();
     // fetchLocation(location);
   }
@@ -68,7 +70,7 @@ export default function Home() {
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=cc8ca712bf2eefce816c3ed3d000e9a8&units=metric`
     );
     const weather = await tempWeather.json();
-    console.log(weather);
+    // console.log(weather);
     setLoading(false);
     setWeather(weather);
   }
@@ -76,8 +78,8 @@ export default function Home() {
   return (
     <>
       {loading && (
-        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20 text-center">
-          <p className="text-white mt-20">Data is loading...</p>
+        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20 flex justify-center items-center">
+          <div className="loader"></div>
         </div>
       )}
       {noGeoLocation ? (
@@ -99,28 +101,13 @@ export default function Home() {
         </div>
       ) : null}
       {!noGeoLocation && weather.cod ? (
-        <div className="text-white text-center mt-10">
-          <p>
-            Weather in {weather.name} is {weather.weather[0].description} and
-            the temp is {Math.trunc(weather.main.temp)} &deg;C
-          </p>
-        </div>
+        <>
+          <main className="main">
+            <TopSection data={weather} />
+            <BottomSection data={weather} />
+          </main>
+        </>
       ) : null}
-
-      {/* {weather.cod ? (
-        <div className="text-white text-center mt-10">
-          <p>
-            Weather in {weather.name} is {weather.weather[0].description} and
-            the temp is {Math.trunc(weather.main.temp)} &deg;C
-          </p>
-        </div>
-      ) : (
-        <div className="text-center mt-10">
-          <p className="bg-red-600 inline text-white rounded-xl px-4 py-2">
-            Enter you city above
-          </p>
-        </div>
-      )} */}
     </>
   );
 }
