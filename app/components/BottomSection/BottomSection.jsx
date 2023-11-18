@@ -1,8 +1,10 @@
 import React from "react";
 import Bottom from "./BottomSection.module.css";
-import Card from "../Card/Card";
+import CardHighLow from "../Card/CardHighLow";
 import LongCardTop from "../LongCardTop/LongCardTop";
 import LongCardBottom from "../LongCardBottom/LongCardBottom";
+import CardHumidity from "../Card/CardHumidity";
+import CardWind from "../Card/CardWind";
 
 const BottomSection = (props) => {
   const { data } = props;
@@ -11,9 +13,9 @@ const BottomSection = (props) => {
       {/* {console.log(data)}; */}
       <div className={Bottom.container}>
         <div className={Bottom.top}>
-          <Card data={data} />
-          <Card data={data} />
-          <Card data={data} />
+          <CardHighLow data={data} />
+          <CardHumidity data={data} />
+          <CardWind data={data} />
         </div>
         <div className={Bottom.middle}>
           <LongCardTop data={data} />

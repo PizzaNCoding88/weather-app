@@ -1,12 +1,12 @@
 .container {
-  @apply flex items-center justify-between px-3 py-2 bg-gradient-to-b from-[#6EAAE0] to-[#707071] rounded-lg text-white font-light text-base;
+  @apply flex items-center justify-between px-10 py-2 bg-gradient-to-b from-[#6EAAE0] to-[#707071] rounded-lg text-white font-light text-base;
 }
 
 .container img {
-  @apply w-12 h-12;
+  @apply w-14 h-14;
 }
 
 .left,
 .right {
-  @apply flex gap-2 items-center;
+  @apply flex gap-6 items-center;
 }

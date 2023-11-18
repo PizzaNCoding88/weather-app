@@ -1,3 +1,15 @@
-.container {
+.containerHighLow {
+  @apply flex flex-col justify-center gap-6 text-white px-2 py-4 text-xs bg-gradient-to-b from-[#6EAAE0] to-[#707071] rounded-lg;
+}
+
+.containerHumidity {
   @apply flex flex-col gap-1 text-white px-2 py-4 text-xs bg-gradient-to-b from-[#6EAAE0] to-[#707071] rounded-lg;
+}
+
+.humiditytop {
+  @apply flex items-center justify-center;
+}
+
+.humidityIcon {
+  @apply w-12 h-12;
 }

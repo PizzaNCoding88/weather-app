@@ -19,11 +19,11 @@
 }
 
 .position {
-  @apply text-center uppercase text-2xl font-bold;
+  @apply text-center uppercase text-4xl font-bold;
 }
 
 .position span {
-  @apply text-base font-normal;
+  @apply text-lg font-normal;
 }
 
 .bottom {
@@ -31,15 +31,15 @@
 }
 
 .bottomright {
-  @apply text-right flex flex-col gap-2 text-xl;
+  @apply text-right flex flex-col gap-6 text-xl;
 }
 
 .temp {
-  @apply text-3xl font-bold;
+  @apply text-4xl font-bold;
 }
 
 .bottom img {
-  @apply h-20 w-20;
+  @apply h-28 w-28;
 }
 
 .ldsring {
