@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import PageStyle from "./page.module.css";
 import TopSection from "./components/TopSection/TopSection";
 import BottomSection from "./components/BottomSection/BottomSection";
+import SearchIcon from "../public/assets/search-icon.png";
+import Image from "next/image";
 
 export default function Home() {
   const [location, setLocation] = useState();
@@ -84,13 +86,18 @@ export default function Home() {
       )}
       {noGeoLocation ? (
         <div className={PageStyle.formContainer}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className={PageStyle.form}>
             <input
               placeholder="Enter your city..."
               onChange={handleChange}
+              className={PageStyle.inputbar}
             ></input>
-            <button type="submit" className="bg-slate-500 ml-4">
-              Search
+            <button type="submit" className={PageStyle.searchButton}>
+              <Image
+                alt="search icon"
+                src={SearchIcon}
+                className={PageStyle.searchIcon}
+              />
             </button>
           </form>
         </div>
