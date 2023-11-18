@@ -6,6 +6,14 @@
   @apply h-1/2;
 }
 
+.formContainer {
+  @apply h-[100dvh] flex justify-center items-center;
+}
+
+.loaderContainer {
+  @apply absolute top-0 left-0 w-full h-full bg-black bg-opacity-20 flex justify-center items-center;
+}
+
 .loader {
   --R: 60px;
   --g1: #514b82 96%, #0000;
