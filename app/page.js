@@ -72,7 +72,7 @@ export default function Home() {
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=cc8ca712bf2eefce816c3ed3d000e9a8&units=metric`
     );
     const weather = await tempWeather.json();
-    // console.log(weather);
+    console.log(weather);
     setLoading(false);
     setWeather(weather);
   }
