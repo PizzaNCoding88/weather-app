@@ -7,10 +7,10 @@ const Card = (props) => {
     <>
       <div className={Cardstyle.containerHighLow}>
         <div className={Cardstyle.top}>
-          High Temp: {Math.trunc(data.main.temp_max)}
+          High: {Math.trunc(data.main.temp_max)} &deg;C
         </div>
         <div className={Cardstyle.bottom}>
-          Low Temp: {Math.trunc(data.main.temp_min)}
+          Low: {Math.trunc(data.main.temp_min)} &deg;C
         </div>
       </div>
     </>

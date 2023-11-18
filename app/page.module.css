@@ -2,6 +2,13 @@
   @apply flex flex-col h-[100dvh];
 }
 
+.main {
+  background-image: url("../public/assets/sunny-bg.jpg");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .bottom-section {
   @apply h-1/2;
 }

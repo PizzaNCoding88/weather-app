@@ -2,9 +2,9 @@
   @apply h-1/2 bg-cover bg-right rounded-b-lg flex flex-col justify-between py-14 text-white;
 }
 
-.main {
+/* .main {
   background-image: url("../../../public/assets/sunny-bg.jpg");
-}
+} */
 
 /* .overlay {
   @apply absolute top-0 left-0 w-full h-full bg-opacity-40 bg-gray-900 z-10;
