@@ -4,14 +4,13 @@ import { useEffect, useState } from "react";
 import PageStyle from "./page.module.css";
 import TopSection from "./components/TopSection/TopSection";
 import BottomSection from "./components/BottomSection/BottomSection";
-import SearchIcon from "../public/assets/search-icon.png";
-import Image from "next/image";
+import SearchBar from "./components/SearchBar/Searchbar";
 
 export default function Home() {
   const [location, setLocation] = useState();
   const [weather, setWeather] = useState({});
   const [noGeoLocation, setNoGeoLocation] = useState(true);
-  const [inputText, setInputText] = useState();
+  // const [inputText, setInputText] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -42,16 +41,21 @@ export default function Home() {
     // fetchLocation(location);
   }
 
-  function handleChange(e) {
-    // e.preventDefault;
-    let location = e.target.value;
-    setInputText(location);
-    // fetchLocation(location);
-  }
+  // function handleChange(e) {
+  //   // e.preventDefault;
+  //   let location = e.target.value;
+  //   setInputText(location);
+  //   // fetchLocation(location);
+  // }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    fetchLocation(inputText);
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   fetchLocation(inputText);
+  //   setNoGeoLocation(false);
+  // }
+
+  function handleSubmitParent(location) {
+    fetchLocation(location);
     setNoGeoLocation(false);
   }
 
@@ -84,28 +88,11 @@ export default function Home() {
           <div className={PageStyle.loader}></div>
         </div>
       )}
-      {noGeoLocation ? (
-        <div className={PageStyle.formContainer}>
-          <form onSubmit={handleSubmit} className={PageStyle.form}>
-            <input
-              placeholder="Enter your city..."
-              onChange={handleChange}
-              className={PageStyle.inputbar}
-            ></input>
-            <button type="submit" className={PageStyle.searchButton}>
-              <Image
-                alt="search icon"
-                src={SearchIcon}
-                className={PageStyle.searchIcon}
-              />
-            </button>
-          </form>
-        </div>
-      ) : null}
+      {noGeoLocation ? <SearchBar submitParent={handleSubmitParent} /> : null}
       {!noGeoLocation && weather.cod ? (
         <>
           <main className={PageStyle.main}>
-            <TopSection data={weather} />
+            <TopSection data={weather} submitParent={handleSubmitParent} />
             <BottomSection data={weather} />
           </main>
         </>

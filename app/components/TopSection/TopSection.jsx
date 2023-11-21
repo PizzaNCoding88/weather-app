@@ -2,6 +2,7 @@ import React from "react";
 import Top from "./TopSection.module.css";
 import Image from "next/image";
 import sunIcon from "../../../public/assets/sun-icon.png";
+import SearchBar from "../SearchBar/Searchbar";
 
 const date = new Date();
 const today = date.getDate();
@@ -35,11 +36,12 @@ const month = months[date.getMonth()];
 const weekDay = days[date.getDay()];
 
 const TopSection = (props) => {
-  const { data } = props;
+  const { data, submitParent } = props;
   return (
     <>
       {data ? (
         <div className={Top.main}>
+          <SearchBar submitParent={submitParent} />
           <div className={Top.top}>
             <div className={Top.date}>
               {today} {""}
