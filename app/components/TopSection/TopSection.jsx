@@ -36,12 +36,12 @@ const month = months[date.getMonth()];
 const weekDay = days[date.getDay()];
 
 const TopSection = (props) => {
-  const { data, submitParent } = props;
+  const { data, submitParent, style } = props;
   return (
     <>
       {data ? (
         <div className={Top.main}>
-          <SearchBar submitParent={submitParent} />
+          <SearchBar submitParent={submitParent} style={"included"} />
           <div className={Top.top}>
             <div className={Top.date}>
               {today} {""}

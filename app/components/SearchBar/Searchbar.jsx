@@ -1,8 +1,9 @@
 import React from "react";
-import SearchBarStyle from "./Searchbar.module.css";
 import Image from "next/image";
 import SearchIcon from "../../../public/assets/search-icon.png";
 import { useState } from "react";
+import SearchBarStyleOnly from "./Searchbaronly.module.css";
+import SearchBarStyleIncluded from "./Searchbarincluded.module.css";
 
 const SearchBar = (props) => {
   const { submitParent, style } = props;
@@ -15,28 +16,51 @@ const SearchBar = (props) => {
 
   return (
     <>
-      <div className={SearchBarStyle.formContainer}>
+      <div
+        className={`${
+          style == "onlysearch"
+            ? SearchBarStyleOnly.formContainer
+            : SearchBarStyleIncluded.formContainer
+        }`}
+      >
         <form
           onSubmit={(e) => {
             e.preventDefault();
             submitParent(inputText);
           }}
-          className={SearchBarStyle.form}
+          className={`${
+            style == "onlysearch"
+              ? SearchBarStyleOnly.form
+              : SearchBarStyleIncluded.form
+          }`}
         >
           <input
-            placeholder="Enter your city..."
+            placeholder={
+              style == "onlysearch" ? "Enter your city..." : "Change city..."
+            }
             onChange={handleChange}
-            className={`${SearchBarStyle.inputbar} ${
-              style === "onlysearch"
-                ? SearchBarStyle.onlysearch
-                : SearchBarStyle.withweather
+            className={`${
+              style == "onlysearch"
+                ? SearchBarStyleOnly.inputbar
+                : SearchBarStyleIncluded.inputbar
             }`}
           ></input>
-          <button type="submit" className={SearchBarStyle.searchButton}>
+          <button
+            type="submit"
+            className={`${
+              style == "onlysearch"
+                ? SearchBarStyleOnly.searchButton
+                : SearchBarStyleIncluded.searchButton
+            }`}
+          >
             <Image
               alt="search icon"
               src={SearchIcon}
-              className={SearchBarStyle.searchIcon}
+              className={`${
+                style == "onlysearch"
+                  ? SearchBarStyleOnly.searchIcon
+                  : SearchBarStyleIncluded.searchIcon
+              }`}
             />
           </button>
         </form>
