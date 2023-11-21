@@ -17,3 +17,11 @@
 .searchIcon {
   @apply h-9 w-9;
 }
+
+.onlysearch {
+  @apply text-red-600;
+}
+
+.withweather {
+  @apply text-fuchsia-600;
+}

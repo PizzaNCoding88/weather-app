@@ -10,7 +10,6 @@ export default function Home() {
   const [location, setLocation] = useState();
   const [weather, setWeather] = useState({});
   const [noGeoLocation, setNoGeoLocation] = useState(true);
-  // const [inputText, setInputText] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -36,7 +35,7 @@ export default function Home() {
 
   function error(error) {
     setNoGeoLocation(true);
-    console.log(error, error.code);
+    // console.log(error, error.code);
     // handleChange();
     // fetchLocation(location);
   }
@@ -76,7 +75,7 @@ export default function Home() {
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=cc8ca712bf2eefce816c3ed3d000e9a8&units=metric`
     );
     const weather = await tempWeather.json();
-    console.log(weather);
+    // console.log(weather);
     setLoading(false);
     setWeather(weather);
   }
@@ -88,7 +87,9 @@ export default function Home() {
           <div className={PageStyle.loader}></div>
         </div>
       )}
-      {noGeoLocation ? <SearchBar submitParent={handleSubmitParent} /> : null}
+      {noGeoLocation ? (
+        <SearchBar submitParent={handleSubmitParent} style={"onlysearch"} />
+      ) : null}
       {!noGeoLocation && weather.cod ? (
         <>
           <main className={PageStyle.main}>

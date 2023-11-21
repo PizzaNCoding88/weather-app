@@ -5,23 +5,16 @@ import SearchIcon from "../../../public/assets/search-icon.png";
 import { useState } from "react";
 
 const SearchBar = (props) => {
-  const { submitParent } = props;
+  const { submitParent, style } = props;
   const [inputText, setInputText] = useState();
-  const [submit, setSubmit] = useState();
 
   function handleChange(e) {
     let location = e.target.value;
     setInputText(location);
   }
 
-  //   function handleSubmit(e) {
-  //     e.preventDefault();
-  //     setSubmit(inputText);
-  //   }
-
   return (
     <>
-      {/* {console.log(inputText)}; */}
       <div className={SearchBarStyle.formContainer}>
         <form
           onSubmit={(e) => {
@@ -33,7 +26,11 @@ const SearchBar = (props) => {
           <input
             placeholder="Enter your city..."
             onChange={handleChange}
-            className={SearchBarStyle.inputbar}
+            className={`${SearchBarStyle.inputbar} ${
+              style === "onlysearch"
+                ? SearchBarStyle.onlysearch
+                : SearchBarStyle.withweather
+            }`}
           ></input>
           <button type="submit" className={SearchBarStyle.searchButton}>
             <Image
