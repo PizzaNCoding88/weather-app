@@ -1,13 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import SearchIcon from "../../../public/assets/search-icon.png";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import SearchBarStyleOnly from "./Searchbaronly.module.css";
 import SearchBarStyleIncluded from "./Searchbarincluded.module.css";
 
 const SearchBar = (props) => {
   const { submitParent, style } = props;
   const [inputText, setInputText] = useState();
+  const inputValue = useRef();
 
   function handleChange(e) {
     let location = e.target.value;
@@ -27,6 +28,7 @@ const SearchBar = (props) => {
           onSubmit={(e) => {
             e.preventDefault();
             submitParent(inputText);
+            e.target.reset();
           }}
           className={`${
             style == "onlysearch"
