@@ -27,6 +27,7 @@ const SearchBar = (props) => {
           onSubmit={(e) => {
             e.preventDefault();
             submitParent(inputText);
+            e.target.reset();
           }}
           className={`${
             style == "onlysearch"
