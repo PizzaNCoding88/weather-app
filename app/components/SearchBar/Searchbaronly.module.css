@@ -1,0 +1,27 @@
+.formContainer {
+  @apply h-[100dvh] flex justify-center items-center;
+}
+
+.form {
+  @apply flex items-center relative;
+}
+
+.inputbar {
+  @apply bg-transparent border-2 border-red-600 rounded-full py-1 pl-4 text-white focus:outline-none;
+}
+
+.searchButton {
+  @apply bg-orange-300 rounded-full p-1 absolute right-0;
+}
+
+.searchIcon {
+  @apply h-9 w-9;
+}
+
+.onlysearch {
+  @apply text-red-600;
+}
+
+.withweather {
+  @apply text-fuchsia-600;
+}

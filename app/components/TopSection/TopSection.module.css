@@ -1,5 +1,5 @@
 .main {
-  @apply h-1/2 bg-cover bg-right rounded-b-lg flex flex-col justify-between py-14 text-white;
+  @apply h-1/2 bg-cover bg-right rounded-b-lg flex flex-col justify-between pb-6 pt-4 text-white;
 }
 
 /* .main {

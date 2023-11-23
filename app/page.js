@@ -4,14 +4,12 @@ import { useEffect, useState } from "react";
 import PageStyle from "./page.module.css";
 import TopSection from "./components/TopSection/TopSection";
 import BottomSection from "./components/BottomSection/BottomSection";
-import SearchIcon from "../public/assets/search-icon.png";
-import Image from "next/image";
+import SearchBar from "./components/SearchBar/Searchbar";
 
 export default function Home() {
   const [location, setLocation] = useState();
   const [weather, setWeather] = useState({});
   const [noGeoLocation, setNoGeoLocation] = useState(true);
-  const [inputText, setInputText] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -37,21 +35,26 @@ export default function Home() {
 
   function error(error) {
     setNoGeoLocation(true);
-    console.log(error, error.code);
+    // console.log(error, error.code);
     // handleChange();
     // fetchLocation(location);
   }
 
-  function handleChange(e) {
-    // e.preventDefault;
-    let location = e.target.value;
-    setInputText(location);
-    // fetchLocation(location);
-  }
+  // function handleChange(e) {
+  //   // e.preventDefault;
+  //   let location = e.target.value;
+  //   setInputText(location);
+  //   // fetchLocation(location);
+  // }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    fetchLocation(inputText);
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   fetchLocation(inputText);
+  //   setNoGeoLocation(false);
+  // }
+
+  function handleSubmitParent(location) {
+    fetchLocation(location);
     setNoGeoLocation(false);
   }
 
@@ -72,7 +75,7 @@ export default function Home() {
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=cc8ca712bf2eefce816c3ed3d000e9a8&units=metric`
     );
     const weather = await tempWeather.json();
-    console.log(weather);
+    // console.log(weather);
     setLoading(false);
     setWeather(weather);
   }
@@ -85,27 +88,12 @@ export default function Home() {
         </div>
       )}
       {noGeoLocation ? (
-        <div className={PageStyle.formContainer}>
-          <form onSubmit={handleSubmit} className={PageStyle.form}>
-            <input
-              placeholder="Enter your city..."
-              onChange={handleChange}
-              className={PageStyle.inputbar}
-            ></input>
-            <button type="submit" className={PageStyle.searchButton}>
-              <Image
-                alt="search icon"
-                src={SearchIcon}
-                className={PageStyle.searchIcon}
-              />
-            </button>
-          </form>
-        </div>
+        <SearchBar submitParent={handleSubmitParent} style={"onlysearch"} />
       ) : null}
       {!noGeoLocation && weather.cod ? (
         <>
           <main className={PageStyle.main}>
-            <TopSection data={weather} />
+            <TopSection data={weather} submitParent={handleSubmitParent} />
             <BottomSection data={weather} />
           </main>
         </>
