@@ -52,8 +52,14 @@ const TopSection = (props) => {
             </div>
           </div>
           <div className={Top.bottom}>
-            <div>
-              <Image alt="weather icon" src={sunIcon}></Image>
+            <div className={Top.ImageContainer}>
+              <Image
+                alt="weather icon"
+                // src={sunIcon}
+                src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+                width={120}
+                height={120}
+              ></Image>
             </div>
             <div className={Top.bottomright}>
               <div className={Top.temp}>{Math.trunc(data.main.temp)}&deg;C</div>

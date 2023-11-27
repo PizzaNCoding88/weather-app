@@ -36,33 +36,24 @@ export default function Home() {
   }
 
   function handleSubmitParent(location) {
-    fetchLocation(location);
+    fetchWeatherByLocation(location);
     setNoGeoLocation(false);
-  }
-
-  async function fetchLocation(location) {
-    const firstCall = await fetch(
-      `https://geocode.maps.co/search?q=${location}`
-    );
-    const address = await firstCall.json();
-
-    // if (location == "Salerno") {
-    //   const latitude = address[1].lat;
-    //   const longitude = address[1].lon;
-    // } else {
-    //   const latitude = address[1].lat;
-    //   const longitude = address[1].lon;
-    // }
-
-    const latitude = address[0].lat;
-    const longitude = address[0].lon;
-    fetchWeather(latitude, longitude);
   }
 
   async function fetchWeather(latitude, longitude) {
     setLoading(true);
     const tempWeather = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=cc8ca712bf2eefce816c3ed3d000e9a8&units=metric`
+    );
+    const weather = await tempWeather.json();
+    setLoading(false);
+    setWeather(weather);
+  }
+
+  async function fetchWeatherByLocation(location) {
+    setLoading(true);
+    const tempWeather = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=cc8ca712bf2eefce816c3ed3d000e9a8&units=metric`
     );
     const weather = await tempWeather.json();
     setLoading(false);
