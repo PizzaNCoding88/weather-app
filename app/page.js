@@ -45,6 +45,15 @@ export default function Home() {
       `https://geocode.maps.co/search?q=${location}`
     );
     const address = await firstCall.json();
+
+    // if (location == "Salerno") {
+    //   const latitude = address[1].lat;
+    //   const longitude = address[1].lon;
+    // } else {
+    //   const latitude = address[1].lat;
+    //   const longitude = address[1].lon;
+    // }
+
     const latitude = address[0].lat;
     const longitude = address[0].lon;
     fetchWeather(latitude, longitude);
